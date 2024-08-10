@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 export async function generateStaticParams(){
     const characters = await fetch('https://rickandmortyapi.com/api/character?page=1').then( (res) => res.json())
@@ -17,10 +18,16 @@ export default async function Page({params}){
     }else{
         return(
             <>
-                <h1>{character.name}</h1>
+                <div >
+                    <Image src={character.image} width={200} height={200} alt={`${character.name} Image`}/>
+                    <div>
+                        <p>Name: {character.name}</p>
+                        <p>Status: <span style={{color:character.status=='Alive'?'#23de23':'#ee3737'}}>{character.status}</span></p>
+                        <p>Species: {character.species}</p>
+                    </div>
+                </div>
             </>
         )
-        
     }
 }
 

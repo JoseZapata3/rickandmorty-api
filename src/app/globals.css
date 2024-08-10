@@ -31,3 +31,8 @@ body {
     text-wrap: balance;
   }
 }
+
+header{
+  padding: 20px 0px 100px 10px;
+}
+

@@ -12,16 +12,26 @@ export default async function Home() {
   const characters = await getCharacters()
   return (
     <>
-      <ul>
-        {
-          characters.results.map(({id, name, image})=>(
-            <li key={id}>
-              <Image src={image} width={100} height={100} alt={`${name} Image`}/>
-              <Link href={`character/${id}`}><h3>{id}-{name}</h3></Link>
-            </li>
-          ))
-        }
-      </ul>
+      <main>
+        <section className="cards-container">
+          {
+            characters.results.map(({id, name, status, image, species})=>(
+              <div key={id} className='card-container'>         
+                  <Link href={`character/${id}`}>
+                    <div className="card">
+                      <Image src={image} width={200} height={200} alt={`${name} Image`}/>
+                      <div className="character-description">
+                        <p>Name: {name}</p>
+                        <p>Status: <span style={{color:status=='Alive'?'#23de23':'#ee3737'}}>{status}</span></p>
+                        <p>Species: {species}</p>
+                      </div>
+                    </div>
+                  </Link>
+              </div>
+            ))
+          }
+        </section>
+      </main>
     </>
   );
 }
