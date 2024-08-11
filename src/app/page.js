@@ -11,28 +11,26 @@ export const metadata = {
 export default async function Home() {
   const characters = await getCharacters()
   return (
-    <>
-      <main>
-        <section className="cards-container">
+      <div className="banner">
+        <div className="slider" style={{"--quantity":20}}>
           {
-            characters.results.map(({id, name, status, image, species})=>(
-              <div key={id} className='card-container'>         
-                  <Link href={`character/${id}`}>
-                    <div className="card">
-                      <Image src={image} width={200} height={200} alt={`${name} Image`}/>
-                      <div className="character-description">
-                        <p>Name: {name}</p>
-                        <p>Status: <span style={{color:status=='Alive'?'#23de23':'#ee3737'}}>{status}</span></p>
-                        <p>Species: {species}</p>
-                      </div>
-                    </div>
-                  </Link>
+            characters.results.map(({id, name, status, image, species},index)=>(
+              <div key={id} className='item' style={{"--position":index+1}}>
+                  <div className="card">
+                    <Link href={`character/${id}`}>
+                        <Image src={image} width={200} height={200} alt={`${name} Image`} priority/>
+                        <div className="character-description">
+                          <p>Name: {name}</p>
+                          <p>Status: <span style={{color:status=='Alive'?'#23de23':'#ee3737'}}>{status}</span></p>
+                          <p>Species: {species}</p>
+                        </div>
+                    </Link>
+                  </div>     
               </div>
             ))
           }
-        </section>
-      </main>
-    </>
+        </div>
+      </div>
   );
 }
 
