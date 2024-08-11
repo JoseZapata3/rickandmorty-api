@@ -18,7 +18,7 @@ export default async function Home() {
               <div key={id} className='item' style={{"--position":index+1}}>
                   <div className="card">
                     <Link href={`character/${id}`}>
-                        <Image src={image} width={200} height={200} alt={`${name} Image`} priority/>
+                        <Image className="character-img" src={image} width={200} height={200} alt={`${name} Image`} priority/>
                         <div className="character-description">
                           <p>Name: {name}</p>
                           <p>Status: <span style={{color:status=='Alive'?'#23de23':'#ee3737'}}>{status}</span></p>
@@ -29,6 +29,13 @@ export default async function Home() {
               </div>
             ))
           }
+        </div>
+        <div className="content">
+            <h1>Rick and Morty Test API Test</h1>
+            <div className="author">
+              <h2>Jose Alejandro Zapata</h2>
+            </div>
+            <div className="model"></div>
         </div>
       </div>
   );
