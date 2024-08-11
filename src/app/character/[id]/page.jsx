@@ -18,14 +18,17 @@ export default async function Page({params}){
     }else{
         return(
             <>
-                <div >
-                    <Image src={character.image} width={200} height={200} alt={`${character.name} Image`}/>
-                    <div>
-                        <p>Name: {character.name}</p>
-                        <p>Status: <span style={{color:character.status=='Alive'?'#23de23':'#ee3737'}}>{character.status}</span></p>
-                        <p>Species: {character.species}</p>
+                <div className="personal-card">
+                    <div className="card">
+                        <Image className="personal-img" src={character.image} width={400} height={400} alt={`${character.name} Image`}/>
+                        <div className="character-description">
+                            <p>Name: {character.name}</p>
+                            <p>Status: <span style={{color:character.status=='Alive'?'#23de23':'#ee3737'}}>{character.status}</span></p>
+                            <p>Species: {character.species}</p>
+                        </div>
                     </div>
                 </div>
+                
             </>
         )
     }
